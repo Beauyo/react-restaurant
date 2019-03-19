@@ -5,7 +5,7 @@ import { Container, } from "semantic-ui-react";
 import axios from "axios";
 
 class App extends Component {
-  state ={ Menus: [], };
+  state = { menus: [], };
 
   componentDidMount() {
     axios.get("/api/menus")
@@ -17,7 +17,7 @@ class App extends Component {
       })
   }
 
-  addItem = (name) => {
+  addMenu = (name) => {
    axios.post("/api/menus", { name })
     .then ( res => {
       const { menus, } = this.state;
@@ -53,7 +53,7 @@ class App extends Component {
        <br />
        <br />
        <MenuList
-       Menus={this.state.Menus}
+       menus={this.state.menus}
        updateMenu={this.updateMenu}
        deleteMenu={this.deleteMenu}
       />

@@ -1,9 +1,9 @@
 import React from 'react';
 import Menut from "./Menut";
 
-const MenuList = ({ Menus, updateMenu, deleteMenu }) => (
+const MenuList = ({ menus, updateMenu, deleteMenu }) => (
     <div>
-        { Menus.map( Menu =>
+        { menus.map( Menu =>
             <Menut
             key={Menu.id}
             {...Menu}

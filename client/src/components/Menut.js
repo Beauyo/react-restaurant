@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Icon, Header } from 'semantic-ui-react';
 
 
-const Menu = ({ id, name, deleteMenu }) => (
+const Menut = ({ id, name, deleteMenu }) => (
         <div>
                 <Header as="h2">{name}</Header>
 
@@ -22,4 +22,4 @@ const Menu = ({ id, name, deleteMenu }) => (
 
 )
 
-export default Menu; 
+export default Menut; 
