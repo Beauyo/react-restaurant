@@ -1,5 +1,5 @@
 class Api::MenusController < ApplicationController
-    before_action set_menu: only: [:update, :destroy]
+    before_action :set_menu, only: [:update, :destroy]
 
     def index
         render json: Menu.all
@@ -16,11 +16,8 @@ class Api::MenusController < ApplicationController
     end
 
     def update
-        if @menu.update
-            render json: @menu
-        else
-            render json: { errors: @menu.errors }, status: :unprocessable_entity
-        end
+       @menu.update(menu_params)
+       render json: @menu
     end
 
     def destroy

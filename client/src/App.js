@@ -10,16 +10,15 @@ class App extends Component {
   componentDidMount() {
     axios.get("/api/menus")
       .then( res => {
-        debugger
-        this.setState({ menus: res.data, });
+         this.setState({ menus: res.data, });
       })
       .catch( err => {
-        console.log(err);
+       console.log(err);
       })
   }
 
   addItem = (name) => {
-   axios.post("/api/menus")
+   axios.post("/api/menus", { name })
     .then ( res => {
       const { menus, } = this.state;
       this.setState({ menus: [...menus, res.data], })
@@ -27,19 +26,30 @@ class App extends Component {
   }
 
   updateMenu = (id) => {
-    // make api call to update Menu
+    axios.put(`api/menus/${id}`)
+    .then( res => {
+      const menus = this.state.menus.map( t => {
+        if (t.id === id)
+        return res.data;
+        return t;
+      });
+      this.setState({ menus, })
+    })
   }
 
   deleteMenu = (id) => {
-    // make api call to delete Menu
-    // remove it from state
+    axios.delete(`/api/menus${id}`)
+      .then( res => {
+        const { menus, } = this.state;
+        this.setState({ menus: menus.filter( t => t.id !== id ), })
+      })
   }
 
   render() {
     return (
       <Container style={{ padding: "30px 0", }}>
       <h1>Menu List</h1>
-       <MenuForm addItem={this.addItem} />
+       <MenuForm addMenu={this.addMenu} />
        <br />
        <br />
        <MenuList

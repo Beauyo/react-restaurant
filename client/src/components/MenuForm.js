@@ -21,6 +21,7 @@ class MenuForm extends React.Component {
             label="Menu"
             placeholder="Add A Menu"
             required
+            name="name"
             value={this.state.name}
             onChange={this.handleChange}
             />

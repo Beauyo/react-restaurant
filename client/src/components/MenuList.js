@@ -1,5 +1,5 @@
 import React from 'react';
-import Menut from "./Menu";
+import Menut from "./Menut";
 
 const MenuList = ({ Menus, updateMenu, deleteMenu }) => (
     <div>
